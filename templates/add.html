@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 main">
+	      <form id='add-poem'>
+	          <input type="text" name="title" value="" class="form-control input-lg" placeholder="Poem Title"  />
+	          <br>
+	          <textarea name="body" id='poem-body' class = "form-control input-lg"></textarea>
+
+	          <!-- Test out plain text -->
+	          <!-- <textarea name="body" id='poem-body-plain' class = "form-control input-lg"></textarea> -->
+	          <br>
+	          <button class="btn btn-lg btn-primary btn-block" >Save My Poem</button>
+	      </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

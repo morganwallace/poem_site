@@ -1,3 +1,17 @@
 #wrap{
 	margin-top: 50px;
 }
+#add-poem textarea{
+	width: 100%;
+	min-height: 300px;
+}
+#login-btn{
+	cursor: hand;
+	cursor: pointer;
+}
+#signup input{
+	margin-bottom: 5px;
+}
+body{
+	margin-top: 70px;
+}

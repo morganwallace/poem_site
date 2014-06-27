@@ -1,63 +1,10 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <link rel="shortcut icon" href="../../assets/ico/favicon.ico"> -->
-
-    <title>Help My Poem</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../static/css/dashboard.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  <style type="text/css"></style><style id="holderjs-style" type="text/css"></style></head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">HelpMyPoem.com</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-          <!-- <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form> -->
-        </div>
-      </div>
-    </div> 
-<!-- end navbar -->
-
-<div class="container" id="wrap">
+{% extends 'layout.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form class="form" role="form" id='signup' action="/adduser" method="POST"> 
+        <div class="col-md-6 col-md-offset-3 main">
+          <form class="form" id='signup' > 
             <!-- <form action="adduser" method="post" accept-charset="utf-8" class="form" role="form">  -->  
                 <legend>Sign Up</legend>
                     <div class="row">
@@ -66,7 +13,9 @@
                         <div class="col-xs-6 col-md-6">
                             <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        </div>
                     </div>
-                    <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /><input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
+                    <input type="text" name="email" value="" class="form-control input-lg" placeholder="Email"  />
+                    <input type="text" name="username" value="" class="form-control input-lg" placeholder="Username"  />
+                    <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
                         <div class="col-xs-4 col-md-4">
                             <select name="month" class = "form-control input-lg">
 <option value="01">Jan</option>
@@ -115,9 +64,44 @@
 <option value="29">29</option>
 <option value="30">30</option>
 <option value="31">31</option>
-</select>                        </div>
-                        <div class="col-xs-4 col-md-4">
-                            <select name="year" class = "form-control input-lg">
+</select>                        
+</div>
+<div class="col-xs-4 col-md-4">
+<select name="year" class = "form-control input-lg">
+<option value="1941">1901</option>
+<option value="1942">1902</option>
+<option value="1943">1903</option>
+<option value="1944">1904</option>
+<option value="1935">1905</option>
+<option value="1936">1906</option>
+<option value="1937">1907</option>
+<option value="1938">1908</option>
+<option value="1939">1909</option>
+<option value="1940">1910</option>
+<option value="1941">1911</option>
+<option value="1942">1912</option>
+<option value="1943">1913</option>
+<option value="1944">1914</option>
+<option value="1945">1915</option>
+<option value="1946">1916</option>
+<option value="1947">1917</option>
+<option value="1948">1918</option>
+<option value="1949">1919</option>
+<option value="1950">1920</option>
+<option value="1951">1921</option>
+<option value="1952">1922</option>
+<option value="1953">1923</option>
+<option value="1954">1924</option>
+<option value="1955">1925</option>
+<option value="1956">1926</option>
+<option value="1957">1927</option>
+<option value="1958">1928</option>
+<option value="1959">1929</option>
+<option value="1960">1930</option>
+<option value="1961">1931</option>
+<option value="1962">1932</option>
+<option value="1963">1933</option>
+<option value="1964">1934</option>
 <option value="1935">1935</option>
 <option value="1936">1936</option>
 <option value="1937">1937</option>
@@ -163,7 +147,7 @@
 <option value="1977">1977</option>
 <option value="1978">1978</option>
 <option value="1979">1979</option>
-<option value="1980">1980</option>
+<option value="1980" selected>1980</option>
 <option value="1981">1981</option>
 <option value="1982">1982</option>
 <option value="1983">1983</option>
@@ -199,31 +183,18 @@
 <option value="2013">2013</option>
 </select>                        </div>
                     </div>
-                     <label>Gender : </label>                    <label class="radio-inline">
+                     <!-- <label>Gender : </label>                    <label class="radio-inline">
                         <input type="radio" name="gender" value="M" id=male />                        Male
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="gender" value="F" id=female />                        Female
-                    </label>
+                    </label> -->
                     <br />
-              <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
-                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit" onclick="signup">
+             <!--  <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span> -->
+                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
                         Create my account</button>
-            </form>          
-          </div>
-</div>            
+            </form>
+        </div>
+    </div>
 </div>
-</div>
-   
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/docs.min.js"></script
-    <script src="../static/js/main.js"></script
-  
-
-</body></html>
+{% endblock %}
