@@ -13,5 +13,15 @@
 	margin-bottom: 5px;
 }
 body{
-	margin-top: 70px;
+	/*margin-top: 70px;*/
+	padding-top: 50px;
+}
+#hide-signin{
+	color: #999;
+}
+#hide-signin:hover{
+	text-decoration: none;
+	border-radius: 50%;
+	border:1px;
+	border-color: #999;
 }

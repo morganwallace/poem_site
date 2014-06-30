@@ -19,14 +19,16 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     picture_url=db.Column(db.String(120))
     username=db.Column(db.String(80))
+    password=db.Column(db.String(80))
 
-    def __init__(self, firstname, lastname, email, username, picture_url=None):
+    def __init__(self, firstname, lastname, email, username,password,picture_url=None):
         self.firstname = firstname
         self.lastname = firstname
         self.email = email
         # self.my_id=my_id
         self.picture_url=picture_url
         self.username=username
+        self.password = password
 
     def __repr__(self):
         return '<ROW with label: User ID %r>' % self.id
@@ -49,9 +51,25 @@ class Poem(db.Model):
         self.tags=tags
 
     def __repr__(self):
+        return '<ROW with label: Poem ID %r>' % self.id
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id =db.Column(db.Integer)
+    poem_id = db.Column(db.Integer)
+    body = db.Column(db.Text)
+    created_on = db.Column(db.DateTime, default=db.func.now())
+    updated_on = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
+
+
+    def __init__(self, user_id, poem_id,body):
+        self.user_id=user_id
+        self.poem_id=poem_id
+        self.body=body
+
+    def __repr__(self):
         return '<ROW with label: User ID %r>' % self.id
-
-
 
 if __name__ == '__main__':
     manager.run()

@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from flask import session, request, make_response, jsonify, flash, url_for
+from flask import session, request, make_response, jsonify, flash, url_for, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
 from functools import wraps
 
@@ -12,31 +12,27 @@ app.config.from_object('config')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://sllynvkpwzcmnr:5QO8q__RWGhpNEowuVYs-OEXBZ@ec2-54-225-101-64.compute-1.amazonaws.com:5432/dblnmi4smbffiv"
 
-
-
-# db = SQLAlchemy(app)
-
-
 ####### Database classes/schema
 from manage import db, User, Poem
-
 
 
 # login required decorator
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if 'logged_in' in session:
+        if 'user_id' in request.cookies:
             return f(*args, **kwargs)
         else:
             flash('You need to login first.')
-            return redirect(url_for('signin'))
+            return redirect(url_for('signup'))
     return wrap
 
 
 @app.route('/logout')
 @login_required
 def logout():
+    resp.set_cookie('user_id', '')
+    resp.set_cookie('username', '')
     session.pop('logged_in', None)
     flash('You were logged out.')
     return redirect(url_for('home'))
@@ -47,14 +43,16 @@ def logout():
 
 @app.route('/')
 def home():
+    poems=db.session.query(Poem.title, Poem.body).all()
     # all_users = User.query.all()
-    # app.logger.debug( all_users)
+    app.logger.debug(poems)
     # user_id = request.cookies.get('user_id')
     # flash('Your user id is: '+user_id)
-    return render_template('welcome.html')
+    return render_template('welcome.html',poems=poems)
 
 
 @app.route('/add')
+@login_required
 def add():
     # all_users = User.query.all()
     # app.logger.debug( all_users)
@@ -106,7 +104,7 @@ def signin():
 def add_poem():
     app.logger.debug(request.form)
     user_id = request.cookies.get('user_id')
-    app.logger.debug(user_id)
+    # app.logger.debug(user_id)
     #args to init a poem: title, body,user_id,poem_type,tags
     #add to database
     poem= Poem(

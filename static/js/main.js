@@ -46,39 +46,26 @@ $("#add-poem").submit(function(){
 //sign-in
 $("#sign-in").submit(function(){
 
-	// $.post("./signin",
-	// 	$("#sign-in").serialize(),
-	// 	function(data){
-	// 	    console.log('sign-in');
-	// 	    console.log(data);
-	// 	    if (data.success==true){
-	// 	    	console.log('sign in success');
-	// 	    }
-	// 	    else{
-	// 	    	console.log('sign in failure');
-	// 	    }
-	// 	}
-	// )
+	$.post("./signin",
+		$("#sign-in").serialize(),
+		function(data){
+		    console.log('sign-in');
+		    console.log(data);
+		    if (data.success==true){
+		    	console.log('sign in success');
+		    }
+		    else{
+		    	console.log('sign in failure');
+		    }
+		}
+	)
 	console.log('testing sign-in');
 	// e.preventDefault();
 	return false
   })
 
 $(document).ready(function(){
-    $('.navbar-nav [data-toggle="tooltip"]').tooltip();
-    $('.navbar-twitch-toggle').on('click', function(event) {
-        event.preventDefault();
-        $('.navbar-twitch').toggleClass('open');
-    });
-    
-    $('.nav-style-toggle').on('click', function(event) {
-        event.preventDefault();
-        var $current = $('.nav-style-toggle.disabled');
-        $(this).addClass('disabled');
-        $current.removeClass('disabled');
-        $('.navbar-twitch').removeClass('navbar-'+$current.data('type'));
-        $('.navbar-twitch').addClass('navbar-'+$(this).data('type'));
-    });
+
     $("#sign-in").hide();
     $("#login-btn").click(function(){
     	$("#login-btn").hide();
@@ -87,4 +74,8 @@ $(document).ready(function(){
     });
 
 
+    $("#hide-signin").click(function(){
+    	$("#login-btn").show();
+    	$("#sign-in").hide();
+    });
 });
