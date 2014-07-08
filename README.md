@@ -1,34 +1,48 @@
-# Heroku Python Skeleton
+# Help my poem
 
-This repository has all the base files ready for deploying a Heroku application, including a simple database model managed with flask-sqlalchemy.
+This is a Python web app for poets to share and improve their work.
 
-## Usage
+##Installation
+Use the following unix commands to install:
+*If you don't have **virualenv** installed, use this command to install it before continuing.
 
-### Initial
+1. ``git clone git@github.com:morganwallace/poem_site.git``
 
-```bash
-$ git clone https://github.com/yuvadm/heroku-python-skeleton.git
-$ cd heroku-python-skeleton
-$ heroku create
-$ git push heroku master
-```
+2.  ``virtualenv venv && source venv/bin/activate``
 
-### Database
+## Run local server for development
+1. ``python app.py``
+2. preview at http://localhost:5000/
 
-```bash
-$ heroku addons:add heroku-postgresql:dev
------> Adding heroku-postgresql:dev to some-app-name... done, v196 (free)
-Attached as HEROKU_POSTGRESQL_COLOR
-Database has been created and is available
-$ heroku pg:promote HEROKU_POSTGRESQL_COLOR
-$ heroku run python
-```
 
-and in the Python REPL:
 
-```python
->>> from app import db
->>> db.create_all()
-```
+##Documentation
 
-For a detailed introduction see [http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku/](http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku/).
+#### Backend
+* Flask
+* Heroku
+* Postgres
+
+#### Frontend
+Bootsrap 3.0
+Jinja2 (templating)
+
+
+##### Installed Packages (requirements.txt)
+Flask==0.9
+Flask-KVSession==0.6.1
+Flask-Login==0.2.11
+Flask-Migrate==1.2.0
+Flask-SQLAlchemy==1.0
+Flask-Script==2.0.5
+Jinja2==2.6
+Mako==1.0.0
+MarkupSafe==0.23
+SQLAlchemy==0.7.8
+Werkzeug==0.8.3
+alembic==0.6.5
+itsdangerous==0.24
+psycopg2==2.4.5
+simplekv==0.9.2
+six==1.7.3
+wsgiref==0.1.2
